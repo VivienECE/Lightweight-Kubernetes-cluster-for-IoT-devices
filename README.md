@@ -1,10 +1,10 @@
-# Project_BDE
+# Technical Project lightweight Kubernetes cluster for IoT devices
 
-The objective of our project is the installation of k3s on Raspberry Pi and the deployment of a data application.
+The objective of our technical project is the installation of k3s on Raspberry Pi and the deployment of a data application.
 
 - Introduction
 - Installation
-- Deployement
+- Implementation Steps
 - Problems encountered
 
 ----
@@ -77,7 +77,7 @@ K3d (https://k3d.io/v5.2.2/) is a community driven project wich allow to easily 
 
 `wget: wget -q -O - https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash`
 
-## 3. Deployement
+## 3. Implementation Steps
 
 ----
 We can now create a cluster with one server and 2 agents:
