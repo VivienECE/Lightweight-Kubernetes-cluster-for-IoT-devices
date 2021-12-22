@@ -75,4 +75,113 @@ K3d (https://k3d.io/v5.2.2/) is a community driven project wich allow to easily 
 ----
 We can now create a cluster with one server and 2 agents:
 
-`k3d cluster create --agents 2 --port "8080:80@loadbalancer" --volume /mnt/data:/mnt/data`
+`k3d cluster create a --agents 2 --port "8080:80@loadbalancer"`
+
+Then we start the application with this command:
+
+`docker-compose up`
+
+Docker Compose will use the different Dockerfile in the backend and frontend directories.
+
+Now, we need to build and push our images. To do so, we need to use docker hub, the docker platform to manage images. We first need to log:
+
+`docker login -u <your_docker_hub_username>`
+
+At the password prompt, enter the personal access token.
+
+We can now start to building docker images.
+
+For the backend:
+
+`docker build -t backend .`
+
+`docker tag backend <your_docker_hub_username>/backend`
+
+`docker push <your_docker_hub_username>/backend`
+
+For the frontend:
+
+`docker build -t frontend -f Dockerfile .`
+
+`docker tag frontend <your_docker_hub_username>/frontend`
+
+`docker push <your_docker_hub_username>/frontend`
+
+We have to deploy the database to our cluster/
+
+To do it so, we create the persistent volume with this command:
+
+`kubectl apply -f backend/k8s/volumes/persistVolume.yaml`
+
+Then we create the persistent volume claim:
+
+`kubectl apply -f backend/k8s/volumes/persistVolumeClaim.yaml`
+
+We apply this deployment for the database:
+
+`kubectl apply -f backend/k8s/emptyDir/deployment.yml`
+
+And the service:
+
+`kubectl apply -f backend/k8s/emptyDir/service.yml`
+
+We now have to deal with the backend. To do it so, we use a ConfigMap:
+
+`kubectl apply -f backend/backend-config.yaml`
+
+We then create a Secret:
+
+`kubectl create secret generic backend-secrets --from-file=backend_secret=secrets/backend_secret.txt`
+
+We then do the deployment for the backend:
+
+`kubectl apply -f k8s/backend-deployment.yaml`
+
+And for the service:
+
+`kubectl apply -f backend/backend-service.yaml`
+
+After that, we do a similar process for the frontend deployment:
+
+`kubectl apply -f frontend/frontend-deployment.yaml`
+
+And for the service:
+
+`kubectl apply -f frontend/frontend-service.yaml`
+
+We apply the ingress controller:
+
+`kubectl apply -f ingress.yaml`
+
+We can finally acces to our application:
+
+`localhost:8080`
+
+We can access to Kubernetes Dashboard. To do so we need to apply this:
+
+`kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.1.0/aio/deploy/recommended.yaml`
+`
+And to launch this:
+
+`kubectl proxy`
+
+We can acces to the dashboard with this link:
+
+`http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/`
+
+But it will ask a token. To access to it, we need to create the dashboard service account:
+
+`kubectl create serviceaccount dashboard-admin-sa`
+
+And then to bind the service to the cluster-admin role:
+
+`kubectl create clusterrolebinding dashboard-admin-sa 
+--clusterrole=cluster-admin --serviceaccount=default:dashboard-admin-sa`
+
+We then list the secrets:
+
+`kubectl get secrets`
+
+And we display the access token we need to authenticate:
+`kubectl describe secret <your-dashboard-admin-sa-token>`
+
