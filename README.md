@@ -2,17 +2,14 @@
 
 The objective of our project is the installation of k3s on Raspberry Pi and the deployment of a data application.
 
-## 1. Requirements
-
-## 2. Installation
-
-## 3. Deployement
-
-## 4. Problems encountered
+- Requirements
+- Installation
+- Deployement
+- Problems encountered
 
 ----
 
-### 1. Requirements 
+## 1. Requirements
 
 ----
 To do this project, we use a Raspberry Pi 3B+. We first use the Raspberry PI OS, known as Raspbian. However, we then use ubuntu 20.04, because we needed a version of Docker which was not available on Raspbian.
@@ -23,7 +20,7 @@ To use k3s, we used k3d, a tool that allow us to create a Kubernetes cluster on 
 
 So we had to download Docker and kubectl before k3d.
 
-### 2. Installation
+## 2. Installation
 
 ----
 
@@ -31,7 +28,7 @@ docker
 kubectl
 k3d
 
-### Docker
+## Docker
 
 `sudo apt-get update`
 
@@ -65,8 +62,9 @@ We used snap to install kubectl:
 
 `wget: wget -q -O - https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash`
 
-### 3. Deployement
----
+## 3. Deployement
+
+----
 We can now create a cluster with one server and 2 agents:
 
 `k3d cluster create --agents 2 --port "8080:80@loadbalancer" --volume /mnt/data:/mnt/data`
