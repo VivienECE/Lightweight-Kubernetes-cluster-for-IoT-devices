@@ -2,14 +2,14 @@
 
 The objective of our project is the installation of k3s on Raspberry Pi and the deployment of a data application.
 
-- Requirements
+- Introduction
 - Installation
 - Deployement
 - Problems encountered
 
 ----
 
-## 1. Requirements
+## 1. Introduction
 
 ----
 To do this project, we use a Raspberry Pi 3B+. We first use the Raspberry PI OS, known as Raspbian. However, we then use ubuntu 20.04, because we needed a version of Docker which was not available on Raspbian.
@@ -19,6 +19,8 @@ The project builds on k3s, a smaller version of Kubernetes that is better suited
 To use k3s, we used k3d, a tool that allow us to create a Kubernetes cluster on Docker containers.
 
 So we had to download Docker and kubectl before k3d.
+
+![](images/9.jpeg)
 
 ## 2. Installation
 
