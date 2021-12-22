@@ -230,15 +230,18 @@ We can observe the information about replica:
     
 ![](images/8.PNG)
     
- ##4. Problems encountered
+## 4. Problems encountered
     
-    ### Docker version on Raspbian
+### Docker version on Raspbian
+
 We tried on Raspberry Pi 3B+ (1GB RAM & 16Go storage) on the Raspberry PI OS, known as Raspbian. But k3d required an unavaible version of Docker on Raspbian. The last available docker version on Raspbian is 19.03, when k3d required a version >20.
 
-    ### Ubuntu and Pi 3B+ model limits
+### Ubuntu and Pi 3B+ model limits
+
 Then we installed Ubuntu 20.04 LTS on the Raspberry. We managed to install all packages (docker, kubectl, k3d), but we got limited by the RAM when we try to create the cluster with k3d. 
     
-    ### Ubuntu on VM storage.
+### Ubuntu on VM storage.
+
 Then, we install Ubuntu image on Virtual Box with 4GB RAM & 10Go storage. But we got limited by the disk storage but our nodes were "under disk pressure" and were unable to run.
 We advise to allow 32Go disk space to be more than enough. At the end of the implementation, we reached 24Go of used space.
     
