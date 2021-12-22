@@ -77,6 +77,12 @@ We can now create a cluster with one server and 2 agents:
 
 `k3d cluster create a --agents 2 --port "8080:80@loadbalancer"`
 
+We can look at the created nodes:
+
+`kubectl get nodes`
+
+![](images/1.PNG)
+
 Then we start the application with this command:
 
 `docker-compose up`
@@ -149,6 +155,18 @@ And for the service:
 
 `kubectl apply -f frontend/frontend-service.yaml`
 
+We can now observe the list of deployments:
+
+`kubectl get deployments`
+
+![](images/2.PNG)
+
+And the list of services:
+
+`kubectl get services`
+
+![](images/3.PNG)
+
 We apply the ingress controller:
 
 `kubectl apply -f ingress.yaml`
@@ -156,6 +174,8 @@ We apply the ingress controller:
 We can finally acces to our application:
 
 `localhost:8080`
+
+![](images/4.PNG)
 
 We can access to Kubernetes Dashboard. To do so we need to apply this:
 
@@ -187,4 +207,10 @@ And we display the access token we need to authenticate:
 
 `kubectl describe secret <your-dashboard-admin-sa-token>`
 
-![](images/1.PNG)
+![](images/5.PNG)
+    
+![](images/6.PNG)
+
+![](images/7.PNG)
+    
+![](images/8.PNG)
