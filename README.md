@@ -161,6 +161,7 @@ We can access to Kubernetes Dashboard. To do so we need to apply this:
 
 `kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.1.0/aio/deploy/recommended.yaml`
 `
+
 And to launch this:
 
 `kubectl proxy`
