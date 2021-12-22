@@ -30,6 +30,8 @@ k3d
 
 ## Docker
 
+Docker allow us to create and run containers. We will use it to push/pull our backend and frontend images in the docker Hub. 
+
 `sudo apt-get update`
 
 `sudo apt-get install \
@@ -48,7 +50,11 @@ k3d
 
 `sudo apt-get install docker-ce docker-ce-cli containerd.io`
 
+`sudo apt-get install docker-compose`
+
 ### Kubectl
+
+Kubectl is the Kubernetes command-line tool. It allows us to run commands against Kubernetes clusters, deploy applications, inspect and manage cluster resources, and view logs. We will use kubectl to deploys our applications.
 
 We used snap to install kubectl:
 
@@ -59,6 +65,8 @@ We used snap to install kubectl:
 `sudo snap install kubectl --classic`
 
 ### K3d
+
+K3d (https://k3d.io/v5.2.2/) is a community driven project wich allow to easily create single- and multi-node k3s clusters in docker, e.g. for local development on Kubernetes. We will use K3d to create our cluster.
 
 `wget: wget -q -O - https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash`
 
