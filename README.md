@@ -187,4 +187,4 @@ And we display the access token we need to authenticate:
 
 `kubectl describe secret <your-dashboard-admin-sa-token>`
 
-![](images/1.png)
+![](images/1.PNG)
