@@ -28,7 +28,7 @@ services:
       context: ./frontend
     ports:
       - "3001:3000"
-    networks:
+    links:
       - backend
     depends_on:
       - backend
