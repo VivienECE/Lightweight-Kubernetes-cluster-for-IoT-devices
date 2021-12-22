@@ -1,4 +1,4 @@
-# Technical Project lightweight Kubernetes cluster for IoT devices
+# Technical Project : Lightweight Kubernetes cluster for IoT devices
 
 The objective of our technical project is the installation of k3s on Raspberry Pi and the deployment of a data application.
 
