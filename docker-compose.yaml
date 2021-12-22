@@ -1,0 +1,43 @@
+version: '3'
+services:
+  redis:
+    image: redis:latest
+    command: ["redis-server", "--bind", "redis", "--port", "6379"]
+    hostname: redis-server
+    networks:
+     - redis-net
+    ports:
+     - "6379:6379"
+     
+  backend:
+    build: 
+      context: ./backend
+    ports:
+     - "3000:3000"
+    command: ["node", "src/init"]
+    environment:
+     - REDIS_HOST=redis-server
+     - INIT_BACKEND=true
+    networks:
+      - redis-net
+    depends_on:
+      - redis
+  
+  frontend:
+    build: 
+      context: ./frontend
+    ports:
+      - "3001:3000"
+    networks:
+      - backend
+    depends_on:
+      - backend
+
+networks:
+ redis-net:
+  driver: bridge
+  
+      
+  
+ 
+ 
