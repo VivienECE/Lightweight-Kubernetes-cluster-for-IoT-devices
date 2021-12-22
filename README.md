@@ -206,11 +206,19 @@ We then list the secrets:
 And we display the access token we need to authenticate:
 
 `kubectl describe secret <your-dashboard-admin-sa-token>`
+    
+We can now access to the kuvernetes dashboard and different metrics:
 
 ![](images/5.PNG)
     
+We can see the deployments:
+    
 ![](images/6.PNG)
 
+We can see our different pods:
+    
 ![](images/7.PNG)
+    
+We can observe the information about replica:
     
 ![](images/8.PNG)
