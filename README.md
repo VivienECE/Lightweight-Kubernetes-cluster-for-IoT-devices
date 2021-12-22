@@ -183,5 +183,6 @@ We then list the secrets:
 `kubectl get secrets`
 
 And we display the access token we need to authenticate:
+
 `kubectl describe secret <your-dashboard-admin-sa-token>`
 
