@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: Project_BDE
+      tier: backend
+  replicas: 3
+  # refers to the pod
+  template:
+    metadata:
+      labels:
+        app: Project_BDE
+        tier: backend
+    spec:
+      containers:
+        - name: backend
+          image: nicolaslenain5322/backend:latest
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: REDIS_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-config
+                  key: redis_uri
+            - name: SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secrets
+                  key: backend_secret
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1024Mi"
+          ports:
+            - containerPort: 3000

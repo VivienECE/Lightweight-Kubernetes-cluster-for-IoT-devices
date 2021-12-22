@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: Project_BDE
+      tier: frontend
+  replicas: 2
+  # refers to the pod
+  template:
+    metadata:
+      labels:
+        app: Project_BDE
+        tier: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: nicolaslenain5322/frontend:latest
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1024Mi"
+          ports:
+            - containerPort: 3000
