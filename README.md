@@ -22,7 +22,8 @@ The goal is to **implement this cluster architecture** on one machine Ubuntu:
 
 Ingress is an API object that manages external access to the services in a cluster and provide load balancing between nodes.
 
-The frontend is a NodeJS web application. We re-use school project on pollution. The original frontend use cloud storage (Dynamodb), so we had to modify the code to request a localhost backend.
+The frontend is a NodeJS web application. We re-use school project on pollution : https://github.com/Saikuron/meteostat/tree/dev_frontend.
+The original frontend communicate with a cloud storage (Dynamodb), so we had to modify the code to request a localhost backend.
 
 The backend is also a very simple NodeJS API application with Redis to store data.
 
@@ -33,7 +34,7 @@ These pods are distributed inside 3 nodes to insure availability and consistency
 
 ----
 
-To use **Lightweight Kubernetes** (k3s:https://k3s.io/), we used k3d. This is a tool that allow us to create a k3s cluster on Docker containers.
+To use **Lightweight Kubernetes** (https://k3s.io/), we used k3d. This is a tool that allow us to create a k3s cluster on Docker containers.
 We first have to download **Docker** and **kubectl** before k3d.
 
 ## Docker
