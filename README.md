@@ -1,6 +1,6 @@
 # Technical Project : Lightweight Kubernetes cluster for IoT devices
 
-The objective of our technical project is the installation of k3s on Raspberry Pi and the deployment of a data application.
+The objective of our **technical project** is the installation of k3s on Raspberry Pi and the deployment of a data application.
 
 - Introduction
 - Installation
@@ -13,17 +13,18 @@ The objective of our technical project is the installation of k3s on Raspberry P
 
 ----
 
-To do this project, we planned to use a Raspberry.
-But due to some issues detailed in "Problems encountered" part, we finally used an Ubuntu (20.04 LTS Desktop) image on Virtual Box with 4GB RAM & 32GB storage.
+To do this project, we planned to use a **Raspberry**.
+But due to some issues detailed in "Problems encountered" part, we finally used an Ubuntu (20.04 LTS Desktop) image on **Virtual Box** with 4GB RAM & 32GB storage.
 
-So, in this project, we will deploy this cluster architecture:
+In this project, we will install different technologies to **deploy a webserver and a database** under a distributed architecture.
+The goal is to **implement this cluster architecture** on one machine Ubuntu:
 ![](images/9.jpeg)
 
 Ingress is an API object that manages external access to the services in a cluster and provide load balancing between nodes.
 
-The frontend is a NodeJS web application. We re-use school project on pollution. The original frontend use cloud storage (Dynamodb), so we modify to request our localhost backend.
+The frontend is a NodeJS web application. We re-use school project on pollution. The original frontend use cloud storage (Dynamodb), so we had to modify the code to request a localhost backend.
 
-The backend is also a NodeJS API application with Redis to store data. 
+The backend is also a very simple NodeJS API application with Redis to store data.
 
 It's a distributed architecture where we replicate our frontend into 2 pods, and our backend into 3 pods.
 These pods are distributed inside 3 nodes to insure availability and consistency of our application.
@@ -32,8 +33,8 @@ These pods are distributed inside 3 nodes to insure availability and consistency
 
 ----
 
-To use k3s, we used k3d, a tool that allow us to create a Kubernetes cluster on Docker containers.
-So we had to download Docker and kubectl before k3d.
+To use **Lightweight Kubernetes** (k3s:https://k3s.io/), we used k3d. This is a tool that allow us to create a k3s cluster on Docker containers.
+We first have to download **Docker** and **kubectl** before k3d.
 
 ## Docker
 
@@ -245,4 +246,4 @@ Then we installed Ubuntu 20.04 LTS on the Raspberry. We managed to install all p
 Then, we install Ubuntu image on Virtual Box with 4GB RAM & 10GB storage. But we got limited by the disk storage but our nodes were "under disk pressure" and were unable to run.
 We advise to allow 32GB disk space to be more than enough. At the end of the implementation, we reached 24GB of used space.
     
-Despite that k3s is smaller version of Kubernetes that is better suited to devices with less capacity. We would need more raspberry models (to install one node per raspberry) or a better model like Raspberry 4B (to handle the whole cluster memory charge).
+Despite that k3s is smaller version of Kubernetes that is better suited to devices with less capacity. We would need more raspberry models (to install one node per raspberry) to build a real distributed architecture or a better model like Raspberry 4B (to handle the whole cluster memory charge).
