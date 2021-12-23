@@ -14,7 +14,7 @@ The objective of our technical project is the installation of k3s on Raspberry P
 ----
 
 To do this project, we planned to use a Raspberry.
-But due to some issues detailed in "Problems encountered" part, we finally used an Ubuntu (20.04 LTS Desktop) image on Virtual Box with 4GB RAM & 32Go storage.
+But due to some issues detailed in "Problems encountered" part, we finally used an Ubuntu (20.04 LTS Desktop) image on Virtual Box with 4GB RAM & 32GB storage.
 
 So, in this project, we will deploy this cluster architecture:
 ![](images/9.jpeg)
@@ -234,7 +234,7 @@ We can observe the information about replica:
     
 ### Docker version on Raspbian
 
-We tried on Raspberry Pi 3B+ (1GB RAM & 16Go storage) on the Raspberry PI OS, known as Raspbian. But k3d required an unavaible version of Docker on Raspbian. The last available docker version on Raspbian is 19.03, when k3d required a version >20.
+We tried on Raspberry Pi 3B+ (1GB RAM & 16GB storage) on the Raspberry PI OS, known as Raspbian. But k3d required an unavaible version of Docker on Raspbian. The last available docker version on Raspbian is 19.03, when k3d required a version >20.
 
 ### Ubuntu and Pi 3B+ model limits
 
@@ -242,7 +242,7 @@ Then we installed Ubuntu 20.04 LTS on the Raspberry. We managed to install all p
     
 ### Ubuntu on VM storage.
 
-Then, we install Ubuntu image on Virtual Box with 4GB RAM & 10Go storage. But we got limited by the disk storage but our nodes were "under disk pressure" and were unable to run.
-We advise to allow 32Go disk space to be more than enough. At the end of the implementation, we reached 24Go of used space.
+Then, we install Ubuntu image on Virtual Box with 4GB RAM & 10GB storage. But we got limited by the disk storage but our nodes were "under disk pressure" and were unable to run.
+We advise to allow 32GB disk space to be more than enough. At the end of the implementation, we reached 24GB of used space.
     
 Despite that k3s is smaller version of Kubernetes that is better suited to devices with less capacity. We would need more raspberry models (to install one node per raspberry) or a better model like Raspberry 4B (to handle the whole cluster memory charge).
