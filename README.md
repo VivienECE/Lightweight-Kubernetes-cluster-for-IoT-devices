@@ -86,12 +86,13 @@ We can now create a cluster with one server and 2 agents:
 
 `k3d cluster create a --agents 2 --port "8080:80@loadbalancer"`
 
-We can look at the created nodes:
+We can look at the created nodes that correspond to our cluster architecture diagram:
 
 `kubectl get nodes`
 
 ![](images/1.PNG)
 
+We now have to build an image of our frontend and backend.
 Then we start the application with this command:
 
 `docker-compose up`
