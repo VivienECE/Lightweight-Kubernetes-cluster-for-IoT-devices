@@ -92,14 +92,14 @@ We can look at the created nodes that correspond to our cluster architecture dia
 
 ![](images/1.PNG)
 
-We now have to build an image of our frontend and backend.
-Then we start the application with this command:
+We now have to build the docker image of our frontend and backend to deploy them in the cluster.
+For that, we start the application with this command:
 
 `docker-compose up`
 
 Docker Compose will use the different Dockerfile in the backend and frontend directories.
 
-Now, we need to build and push our images. To do so, we need to use docker hub, the docker platform to manage images. We first need to log:
+Now, we need to push our images. To do so, we need to use docker hub, the docker platform to manage images. We first need to log:
 
 `docker login -u <your_docker_hub_username>`
 
